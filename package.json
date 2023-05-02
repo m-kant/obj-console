@@ -1,0 +1,37 @@
+{
+  "name": "obj-console",
+  "version": "1.0.0",
+  "description": "Shows JS objects in terminal with custom format in VSCode colors",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "rimraf ./dist && tsc --project tsconfig.build.json",
+    "dev": "nodemon --exec ts-node --files ./src/main.ts",
+    "test": "jest --verbose --silent",
+    "test:watch": "jest --watch --verbose",
+    "test:coverage": "jest --coverage --verbose --silent",
+    "test:w:debug": "node --inspect-brk ./node_modules/jest/bin/jest.js --runInBand"
+  },
+  "keywords": [
+    "format",
+    "console",
+    "ansi",
+    "color",
+    "print",
+    "objects",
+    "custom"
+  ],
+  "author": "mkant@list.ru",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/jest": "^29.5.1",
+    "@types/node": "^18.14.5",
+    "chalk": "^4.1.2",
+    "jest": "^29.5.0",
+    "jest-cli": "^29.5.0",
+    "nodemon": "^2.0.21",
+    "rimraf": "^5.0.0",
+    "ts-jest": "^29.0.5",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.9.5"
+  }
+}
