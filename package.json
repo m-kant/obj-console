@@ -1,6 +1,6 @@
 {
   "name": "obj-console",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Shows JS objects in terminal with custom format in VSCode colors",
   "main": "dist/index.js",
   "scripts": {
@@ -20,6 +20,10 @@
     "objects",
     "custom"
   ],
+  "repository": {"type": "git", "url": "https://github.com/m-kant/obj-console"},
+  "bugs": {
+    "url": "https://github.com/m-kant/obj-console/issues"
+  },
   "author": "mkant@list.ru",
   "license": "ISC",
   "devDependencies": {

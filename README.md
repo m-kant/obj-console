@@ -2,9 +2,9 @@
 
 Beautify terminal output of JS-objects with VSCode colors and custom format. 10K dist with no dependencies.
 
-![columns-object](./docs/columns-object.png)
+![columns-object](https://github.com/m-kant/obj-console/raw/main/docs/columns-object.png)
 
-![unfold depth](./docs/unfold-depth.png)
+![unfold depth](https://github.com/m-kant/obj-console/raw/main/docs/unfold-depth.png)
 
 ## Usage
 
@@ -61,4 +61,4 @@ objConsole(someData, BRIEF);
 - AS_JSON
 - COLUMNS
 
-![brief](./docs/brief.png)
+![brief](https://github.com/m-kant/obj-console/raw/main/docs/brief.png)
