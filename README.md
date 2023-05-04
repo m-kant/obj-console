@@ -2,7 +2,7 @@
 
 Beautify terminal output of JS-objects with VSCode colors and custom format. 10K dist with no dependencies.
 
-You can tune output to enhance readability of single objects or arrays, for example, options: `{unfoldDepth: 1, omitBrackets: true, omitEolCommas: true, quote: "", align: true}` leads to output:
+You can tune output to enhance readability of single objects or arrays. Or print compact brief of data just to understand, that data has appropriate form. For example, options: `{unfoldDepth: 1, omitBrackets: true, omitEolCommas: true, quote: "", align: true}` leads to output:
 
 ![columns-object](https://github.com/m-kant/obj-console/raw/main/docs/columns-object.png)
 
@@ -23,7 +23,7 @@ console.log(str); // same as objConsole(someData)
 ## Options
 
 ```typescript
-export interface FormatOptions {
+interface FormatOptions {
   omitBrackets?: boolean;
   /** Ommit commas at the end of lines even in arrays */
   omitEolCommas?: boolean;
