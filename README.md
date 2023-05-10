@@ -2,11 +2,17 @@
 
 Beautify terminal output of JS-objects with VSCode colors and custom format. 10K dist with no dependencies.
 
-You can tune output to enhance readability of single objects or arrays. Or print compact brief of data just to understand, that data has appropriate form. For example, options: `{unfoldDepth: 1, omitBrackets: true, omitEolCommas: true, quote: "", align: true}` leads to output:
+You can tune output to enhance readability of single objects or arrays. For example, options: `{unfoldDepth: 1, omitBrackets: true, omitEolCommas: true, quote: "", align: true}` leads to output:
 
 ![columns-object](https://github.com/m-kant/obj-console/raw/main/docs/columns-object.png)
 
+You can vary `unfoldDepth` to get appropriate readability
+
 ![unfold depth](https://github.com/m-kant/obj-console/raw/main/docs/unfold-depth.png)
+
+ Or print compact brief of data just to understand, that data has appropriate form.
+
+![brief](https://github.com/m-kant/obj-console/raw/main/docs/brief.png)
 
 ## Usage
 
@@ -63,4 +69,3 @@ objConsole(someData, BRIEF);
 - AS_JSON
 - COLUMNS
 
-![brief](https://github.com/m-kant/obj-console/raw/main/docs/brief.png)
