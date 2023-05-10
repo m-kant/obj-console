@@ -1,6 +1,6 @@
 {
   "name": "obj-console",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Shows JS objects in terminal with custom format in VSCode colors",
   "main": "dist/index.js",
   "scripts": {

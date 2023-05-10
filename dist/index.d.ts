@@ -1,6 +1,6 @@
-import { FormatOptions } from './options';
-export * from './options';
-export * from './color-scheme';
+import { FormatOptions } from "./options";
+export { AS_JSON, BRIEF, COLUMNS, COMPACT, ONE_LINE, FormatOptions, defaults } from "./options";
+export { colorScheme, cylceColor } from "./color-scheme";
 /** Prints object to terminal with colors and custom format */
 export declare function objConsole(data: any, opts?: FormatOptions): void;
 /** Same as objConsole() but uses `process.stdout.write()`

@@ -1,10 +1,10 @@
 import paint from "./paint";
-import { FormatOptions, defaults } from './options';
-import { formatScalar } from './format-scalar';
-import { cylceColor } from './color-scheme';
+import { FormatOptions, defaults } from "./options";
+import { formatScalar } from "./format-scalar";
+import { cylceColor } from "./color-scheme";
 
-export * from './options';
-export * from './color-scheme';
+export { AS_JSON, BRIEF, COLUMNS, COMPACT, ONE_LINE, FormatOptions, defaults } from "./options";
+export { colorScheme, cylceColor } from "./color-scheme";
 
 /** Prints object to terminal with colors and custom format */
 export function objConsole(data: any, opts?: FormatOptions) {
@@ -14,7 +14,7 @@ export function objConsole(data: any, opts?: FormatOptions) {
  * instead of `console`. Intended to use in test environment
  * with "mute" console */
 export function objStdout(data: any, opts?: FormatOptions) {
-  process.stdout.write(objFormat(data, opts) + '\n');
+  process.stdout.write(objFormat(data, opts) + "\n");
 }
 
 /** Format object to ANSI-colored string */
@@ -22,21 +22,18 @@ export function objFormat(data: any, opts?: FormatOptions, depth = 0): string {
   const localOpts = Object.assign({}, defaults, opts);
   if (isScalar(data)) return formatScalar(data, localOpts);
   // -- prepare ----
-  const {
-    padding, maxDepth, align, maxArrayLength, keyQuote, unfoldDepth,
-    omitEolCommas, omitBrackets
-  } = localOpts;
+  const { padding, maxDepth, align, maxArrayLength, keyQuote, unfoldDepth, omitEolCommas, omitBrackets } = localOpts;
   if (depth > maxDepth) return paint.hex("BF360C", "...too deep", !depth);
 
   const isLine = depth >= unfoldDepth;
   const bracketsColor = cylceColor(depth);
-  let eol = isLine ? '' : "\n";
+  let eol = isLine ? "" : "\n";
 
-  let bracketsPadd = '';
+  let bracketsPadd = "";
   for (let i = depth; i; i--) bracketsPadd += padding;
   if (isLine) bracketsPadd = "";
-  const valPadd = isLine ? '' : bracketsPadd + padding;
-  const eolComma = (eol && omitEolCommas) ? '' : ', ';
+  const valPadd = isLine ? "" : bracketsPadd + padding;
+  const eolComma = eol && omitEolCommas ? "" : ", ";
 
   // -- Arrays ----
   if (Array.isArray(data)) {
@@ -45,8 +42,8 @@ export function objFormat(data: any, opts?: FormatOptions, depth = 0): string {
       // if ()
       s += valPadd + objFormat(data[i], opts, depth + 1);
       if (i < data.length - 1) s += paint.gray(eolComma);
-      if (maxArrayLength && (i > maxArrayLength - 2)) {
-        s += eol + valPadd +'... overall ' + data.length + ' elements' + eol;
+      if (maxArrayLength && i > maxArrayLength - 2) {
+        s += eol + valPadd + "... overall " + data.length + " elements" + eol;
         break;
       }
       s += eol;
@@ -63,13 +60,13 @@ export function objFormat(data: any, opts?: FormatOptions, depth = 0): string {
     for (let i = 0; i < keys.length; i++) {
       const k = keys[i];
       const v = data[k];
-      s += valPadd + paint.key( keyQuote + k + keyQuote);
+      s += valPadd + paint.key(keyQuote + k + keyQuote);
       s += paint.gray(": ".padEnd(keyMaxLen - k.length + 2));
       s += objFormat(v, opts, depth + 1);
       if (i < keys.length - 1) s += paint.gray(eolComma);
       s += eol;
     }
-    if (!omitBrackets) s +=  bracketsPadd + paint.hex(bracketsColor, "}");
+    if (!omitBrackets) s += bracketsPadd + paint.hex(bracketsColor, "}");
     return s;
   }
 
@@ -84,5 +81,5 @@ function maxKeyLen(data: any) {
 
 /** if data is not array or object then TRUE */
 function isScalar(data: any) {
-  return data === null || typeof data !== 'object'
+  return data === null || typeof data !== "object";
 }

@@ -1,29 +1,23 @@
 "use strict";
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    var desc = Object.getOwnPropertyDescriptor(m, k);
-    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-      desc = { enumerable: true, get: function() { return m[k]; } };
-    }
-    Object.defineProperty(o, k2, desc);
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __exportStar = (this && this.__exportStar) || function(m, exports) {
-    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
-};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.objFormat = exports.objStdout = exports.objConsole = void 0;
+exports.objFormat = exports.objStdout = exports.objConsole = exports.cylceColor = exports.colorScheme = exports.defaults = exports.ONE_LINE = exports.COMPACT = exports.COLUMNS = exports.BRIEF = exports.AS_JSON = void 0;
 const paint_1 = __importDefault(require("./paint"));
 const options_1 = require("./options");
 const format_scalar_1 = require("./format-scalar");
 const color_scheme_1 = require("./color-scheme");
-__exportStar(require("./options"), exports);
-__exportStar(require("./color-scheme"), exports);
+var options_2 = require("./options");
+Object.defineProperty(exports, "AS_JSON", { enumerable: true, get: function () { return options_2.AS_JSON; } });
+Object.defineProperty(exports, "BRIEF", { enumerable: true, get: function () { return options_2.BRIEF; } });
+Object.defineProperty(exports, "COLUMNS", { enumerable: true, get: function () { return options_2.COLUMNS; } });
+Object.defineProperty(exports, "COMPACT", { enumerable: true, get: function () { return options_2.COMPACT; } });
+Object.defineProperty(exports, "ONE_LINE", { enumerable: true, get: function () { return options_2.ONE_LINE; } });
+Object.defineProperty(exports, "defaults", { enumerable: true, get: function () { return options_2.defaults; } });
+var color_scheme_2 = require("./color-scheme");
+Object.defineProperty(exports, "colorScheme", { enumerable: true, get: function () { return color_scheme_2.colorScheme; } });
+Object.defineProperty(exports, "cylceColor", { enumerable: true, get: function () { return color_scheme_2.cylceColor; } });
 /** Prints object to terminal with colors and custom format */
 function objConsole(data, opts) {
     console.log(objFormat(data, opts));
@@ -33,7 +27,7 @@ exports.objConsole = objConsole;
  * instead of `console`. Intended to use in test environment
  * with "mute" console */
 function objStdout(data, opts) {
-    process.stdout.write(objFormat(data, opts) + '\n');
+    process.stdout.write(objFormat(data, opts) + "\n");
 }
 exports.objStdout = objStdout;
 /** Format object to ANSI-colored string */
@@ -47,14 +41,14 @@ function objFormat(data, opts, depth = 0) {
         return paint_1.default.hex("BF360C", "...too deep", !depth);
     const isLine = depth >= unfoldDepth;
     const bracketsColor = (0, color_scheme_1.cylceColor)(depth);
-    let eol = isLine ? '' : "\n";
-    let bracketsPadd = '';
+    let eol = isLine ? "" : "\n";
+    let bracketsPadd = "";
     for (let i = depth; i; i--)
         bracketsPadd += padding;
     if (isLine)
         bracketsPadd = "";
-    const valPadd = isLine ? '' : bracketsPadd + padding;
-    const eolComma = (eol && omitEolCommas) ? '' : ', ';
+    const valPadd = isLine ? "" : bracketsPadd + padding;
+    const eolComma = eol && omitEolCommas ? "" : ", ";
     // -- Arrays ----
     if (Array.isArray(data)) {
         let s = omitBrackets ? "" : paint_1.default.hex(bracketsColor, "[") + eol;
@@ -63,8 +57,8 @@ function objFormat(data, opts, depth = 0) {
             s += valPadd + objFormat(data[i], opts, depth + 1);
             if (i < data.length - 1)
                 s += paint_1.default.gray(eolComma);
-            if (maxArrayLength && (i > maxArrayLength - 2)) {
-                s += eol + valPadd + '... overall ' + data.length + ' elements' + eol;
+            if (maxArrayLength && i > maxArrayLength - 2) {
+                s += eol + valPadd + "... overall " + data.length + " elements" + eol;
                 break;
             }
             s += eol;
@@ -103,5 +97,5 @@ function maxKeyLen(data) {
 }
 /** if data is not array or object then TRUE */
 function isScalar(data) {
-    return data === null || typeof data !== 'object';
+    return data === null || typeof data !== "object";
 }
