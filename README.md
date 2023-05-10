@@ -1,4 +1,4 @@
-# obj-console
+# objConsole, objFormat
 
 Beautify terminal output of JS-objects with VSCode colors and custom format. 10K dist with no dependencies.
 
