@@ -2,7 +2,7 @@
 
 Beautify terminal output of JS-objects with VSCode colors and custom format. 10K dist with no dependencies.
 
-You can tune output to enhance readability of single objects or arrays. For example, options: `{unfoldDepth: 1, omitBrackets: true, omitEolCommas: true, quote: "", align: true}` leads to output:
+You can tune output to enhance representation of single objects or arrays. For example, options: `{unfoldDepth: 1, omitBrackets: true, omitEolCommas: true, quote: "", align: true}` leads to output:
 
 ![columns-object](https://github.com/m-kant/obj-console/raw/main/docs/columns-object.png)
 
