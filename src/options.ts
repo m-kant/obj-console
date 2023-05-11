@@ -55,7 +55,7 @@ export const BRIEF: FormatOptions = {
   maxArrayLength: 5,
   maxStringLength: 20,
   maxDepth: 3,
-  align: true,
+  align: false,
 }
 /** as JSON with double qoutes */
 export const AS_JSON: FormatOptions = {
